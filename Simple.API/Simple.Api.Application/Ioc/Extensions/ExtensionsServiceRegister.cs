@@ -4,10 +4,9 @@ using Simple.Api.Application.Domain.Contracts.Ioc;
 
 namespace Simple.Api.Application.Ioc.Extensions
 {
-
     public static class ExtensionsServiceRegister
     {
-        public static void AdicionarRecursosAplicativoNoAssembly(this IServiceCollection sevices, IConfiguration configuration)
+        public static void AddResourcesList(this IServiceCollection sevices, IConfiguration configuration)
         {
             var appServices = typeof(ExtensionsServiceRegister).Assembly.DefinedTypes
                             .Where(x => typeof(IRegisterApiResources)

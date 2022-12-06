@@ -13,10 +13,10 @@ namespace Simple.Api.Application.Infra.Repositories
         }
 
         public async Task<int> Insert(MovieModel dto) =>
-        await _baseRepository.DbQuerySingleAsync<int>(MovieQuery.InsertMovie, _baseRepository.MapearParametros(dto));
+        await _baseRepository.DbQuerySingleAsync<int>(MovieQuery.InsertMovie, _baseRepository.MappingParameters(dto));
 
         public async Task<bool> Update(MovieModel dto) =>
-        await _baseRepository.DbExecuteAsync(MovieQuery.UpdateMovie, _baseRepository.MapearParametros(dto));
+        await _baseRepository.DbExecuteAsync(MovieQuery.UpdateMovie, _baseRepository.MappingParameters(dto));
           
         public async Task<MovieModel> Get(int id) =>
         await _baseRepository.DbQuerySingleAsync<MovieModel>(MovieQuery.GetMovie, new { id = id });

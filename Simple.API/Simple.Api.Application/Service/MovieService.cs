@@ -51,7 +51,7 @@ namespace Simple.Api.Application.Service
         {
             _logger.LogInformation($"Inserting Movie: {JsonConvert.SerializeObject(obj)} ");
 
-            if (!MovieObjectValidator(obj))
+            if (!MovieObjectValidator(obj, false))
                 return null;
 
             return await _movieRepository.Insert(_mapper.Map<MovieModel>(obj));
@@ -61,15 +61,21 @@ namespace Simple.Api.Application.Service
         {
             _logger.LogInformation($"Updating Movie: {JsonConvert.SerializeObject(obj)} ");
              
-            if (obj.MovieId == 0 || !MovieObjectValidator(obj))
+            if (!MovieObjectValidator(obj, true))
                 return false;
               
             return await _movieRepository.Update(_mapper.Map<MovieModel>(obj));
         }
 
-        public bool MovieObjectValidator(MovieDto obj)
+        public bool MovieObjectValidator(MovieDto obj, bool bIsUpdate)
         {
             bool bAllowed = true;
+
+            if(bIsUpdate && obj.MovieId == 0)
+            {
+                bAllowed = false;
+                _notify.AddNotification("MovieId is missing, update not allowed", (short)HttpStatusCode.BadRequest); 
+            }
 
             if (string.IsNullOrEmpty(obj.MovieTitle))
             {

@@ -66,12 +66,12 @@ namespace Simple.Api.Application.Infra.Repositories.Base
         #endregion
          
 
-        public DynamicParameters MapearParametros(object obj)
+        public DynamicParameters MappingParameters(object obj)
         {
             return new DynamicParameters(obj);
         }
 
-        public void IniciarTransacao()
+        public void StartTransaction()
         {
             InstanceConnection();
             Connection.Open();

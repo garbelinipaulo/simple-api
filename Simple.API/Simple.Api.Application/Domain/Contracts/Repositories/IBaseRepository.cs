@@ -10,8 +10,8 @@ namespace Simple.Api.Application.Domain.Contracts.Repositories
         Task<bool> DbExecuteScalarAsync(string sql, object parameters);
         Task<T> DbExecuteScalarDynamicAsync<T>(string sql, object? parameters = null);
         Task<(IEnumerable<T> Data, TRecordCount RecordCount)> DbQueryMultipleAsync<T, TRecordCount>(string sql, object? parameters = null);
-        DynamicParameters MapearParametros(object obj);
-        void IniciarTransacao();
+        DynamicParameters MappingParameters(object obj);
+        void StartTransaction();
         void Commit();
         void Rollback();
 

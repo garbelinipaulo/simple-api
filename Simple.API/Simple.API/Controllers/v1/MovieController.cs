@@ -49,7 +49,7 @@ namespace Simple.API.Controllers.v1
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> InserMovie(MovieDto obj)
+        public async Task<IActionResult> InsertMovie(MovieDto obj)
         {
             return RetornoApi(await _movieService.InsertMovie(obj));
         }
