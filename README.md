@@ -1,6 +1,8 @@
 # simple-api
 I've made this project to show and example of a backend api with microservice purpose, will contain only one controller but shows all the process.
 
+# Diagram of the architecture
+![image](https://user-images.githubusercontent.com/106868747/227303533-8fc7190f-bcce-45b7-b14a-bbc9d43dceaa.png)
 
 # About the pattern of the API
 I've separated between two layers:
